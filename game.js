@@ -237,7 +237,7 @@ var scenes = {
       if (playerState.savedGlen === true) {
         return base + "Glen's wife is there waiting. She hugs you with tears in her eyes. You didn't just survive; you made sure someone else did too.";
       } else if (playerState.savedGlen === false) {
-        return base + "You tell the ranger about a guy named Glen. They send a team up. You later learn that they found his body on the ground.";
+        return base + "You tell the ranger about a guy named Glen. They send a team up. You later learn that they found his lifeless body on the ground.";
       } else {
         return base + "You walk to your car and sit for a long time, listening to the heater hum. You survived.";
       }
