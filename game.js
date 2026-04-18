@@ -1,7 +1,6 @@
 var playerState = {};
 
 var scenes = {
-
   // ════════════════════════════════════════
   // PARKING LOT
   // ════════════════════════════════════════
@@ -14,14 +13,18 @@ var scenes = {
       {
         text: "Pack the emergency gear. Better safe than sorry.",
         next: "mile_6",
-        action: function () { playerState.hasGear = true; }
+        action: function () {
+          playerState.hasGear = true;
+        },
       },
       {
         text: "Travel light. You want to move fast today.",
         next: "mile_6",
-        action: function () { playerState.hasGear = false; }
-      }
-    ]
+        action: function () {
+          playerState.hasGear = false;
+        },
+      },
+    ],
   },
 
   // ════════════════════════════════════════
@@ -41,10 +44,15 @@ var scenes = {
     choices: [
       {
         text: "Push for the summit. You're so close.",
-        next: function () { return playerState.hasGear ? "summit_survive" : "dead_summit"; }
+        next: function () {
+          return playerState.hasGear ? "summit_survive" : "summit_light";
+        },
       },
-      { text: "Turn around. Get off the mountain before the storm.", next: "turn_back" }
-    ]
+      {
+        text: "Turn around. Get off the mountain before the storm.",
+        next: "turn_back",
+      },
+    ],
   },
 
   // ── Conditional Summit Survival ──
@@ -53,8 +61,11 @@ var scenes = {
     title: "Caught in the Storm",
     text: "The storm hits before you reach the peak. Lightning cracks across the rock. But you have your emergency gear. You crawl into a deep crevice and wrap yourself in an emergency blanket. You're freezing and the night is long, but you're dry. By morning, the storm passes.",
     choices: [
-      { text: "Head down the mountain as soon as it's light.", next: "aftermath" }
-    ]
+      {
+        text: "Head down the mountain as soon as it's light.",
+        next: "aftermath",
+      },
+    ],
   },
 
   dead_summit: {
@@ -63,7 +74,27 @@ var scenes = {
     dead: true,
     labelText: "DEAD END",
     text: "The storm hits. You have nothing to shield you from the wind and freezing rain. Your hands go numb immediately. Without any layers, your body temperature drops. You try to wait it out behind a rock, but the cold is too much. Search and rescue finds you the next morning. You didn't make it.",
-    ending: true
+    ending: true,
+  },
+
+  summit_light: {
+    img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=300&fit=crop",
+    title: "Race the Storm",
+    text: "Because you're traveling light, you're moving faster than you expected. The clouds are piling up behind you, but you're ahead of them. Your legs feel good. Your pack isn't dragging you down. You can see the summit cairn from here.",
+    choices: [
+      {
+        text: "Give it everything. Sprint the last stretch.",
+        next: "summit_ending",
+      },
+    ],
+  },
+
+  summit_ending: {
+    img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=300&fit=crop",
+    title: "The Summit",
+    labelText: "SUMMIT",
+    text: "You reach the top just as the first distant rumble of thunder rolls across the valley below. You stand there for exactly thirty seconds — long enough to see the whole world laid out beneath you, the storm a dark curtain still miles away. Then you turn and run. You make the trailhead in record time, your car in sight just as the first fat raindrops hit the pavement. You sit in the driver's seat, breathing hard, grinning. You got there. You got back. You did it right.",
+    ending: true,
   },
 
   // ════════════════════════════════════════
@@ -77,10 +108,15 @@ var scenes = {
     choices: [
       {
         text: "Take the shortcut. You need to beat this storm.",
-        next: function () { return playerState.hasGear ? "shortcut_survive" : "dead_shortcut"; }
+        next: function () {
+          return playerState.hasGear ? "shortcut_survive" : "dead_shortcut";
+        },
       },
-      { text: "Stick to the marked trail. You know where it goes.", next: "marked_trail" }
-    ]
+      {
+        text: "Stick to the marked trail. You know where it goes.",
+        next: "marked_trail",
+      },
+    ],
   },
 
   // ── Conditional Shortcut Survival ──
@@ -89,9 +125,15 @@ var scenes = {
     title: "A Bad Slide",
     text: "The shortcut is loose and wet. You slip and slide ten feet, slamming your knee against a boulder. You hear a loud pop. You can't put any weight on it. Because you have your emergency gear, you manage to stay warm while deciding what to do.",
     choices: [
-      { text: "Wrap up in the emergency blanket and blow the rescue whistle.", next: "rescue_ending" },
-      { text: "Snap some branches for crude crutches and try to hobble down.", next: "crutch_ending" }
-    ]
+      {
+        text: "Wrap up in the emergency blanket and blow the rescue whistle.",
+        next: "rescue_ending",
+      },
+      {
+        text: "Snap some branches for crude crutches and try to hobble down.",
+        next: "crutch_ending",
+      },
+    ],
   },
 
   rescue_ending: {
@@ -99,7 +141,7 @@ var scenes = {
     title: "Airlifted",
     labelText: "SURVIVED",
     text: "A group of hikers on the main trail hears your whistle, but seeing the extent of your blown-out knee and the worsening storm, they contact Search and Rescue. You're later airlifted out. It takes a major surgery and six months of physical therapy to walk normally again.",
-    ending: true
+    ending: true,
   },
 
   crutch_ending: {
@@ -107,7 +149,7 @@ var scenes = {
     title: "Irreversible Damage",
     labelText: "SURVIVED",
     text: "You grit your teeth and drag your body down the mountain, using a branch to keep weight off your blown-out knee. By the time you reach the trailhead at dawn, the joint is completely pulverized. The doctor later tells you that you will likely walk with a slight limp for the rest of your life.",
-    ending: true
+    ending: true,
   },
 
   dead_shortcut: {
@@ -116,7 +158,7 @@ var scenes = {
     dead: true,
     labelText: "DEAD END",
     text: "You slip and blow out your knee. You're off-trail and nobody can hear you. Without emergency gear, you spend the night shivering in the rain. By morning, you're too weak to call out.",
-    ending: true
+    ending: true,
   },
 
   // ════════════════════════════════════════
@@ -126,19 +168,23 @@ var scenes = {
   marked_trail: {
     img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=300&fit=crop",
     title: "Someone on the Trail",
-    text: "You see a guy sitting on the ground. He looks about 50, holding a swollen ankle. He says his name is Glen. \"I can't put weight on it,\" he says. \"My wife is at the trailhead. I've got no signal.\" Rain is falling steadily now.",
+    text: 'You see a guy sitting on the ground. He looks about 50, holding a swollen ankle. He says his name is Glen. "I can\'t put weight on it," he says. "My wife is at the trailhead. I\'ve got no signal." Rain is falling steadily now.',
     choices: [
       {
         text: "Stop. Help him up.",
         next: "help_hiker",
-        action: function () { playerState.savedGlen = true; }
+        action: function () {
+          playerState.savedGlen = true;
+        },
       },
       {
         text: "Tell him you'll send help. Keep moving.",
         next: "leave_hiker",
-        action: function () { playerState.savedGlen = false; }
-      }
-    ]
+        action: function () {
+          playerState.savedGlen = false;
+        },
+      },
+    ],
   },
 
   help_hiker: {
@@ -146,9 +192,14 @@ var scenes = {
     title: "Two is Better",
     text: "You get his arm over your shoulder. It's slow. You reach the creek crossing. Normally it's ankle-deep. Today it's knee-high and moving fast, brown with mud.",
     choices: [
-      { text: "Walk through. It doesn't look that deep.", next: function () { return playerState.hasGear ? "dead_river" : "river_survive_light"; } },
-      { text: "Don't risk it. Find shelter and wait it out.", next: "shelter" }
-    ]
+      {
+        text: "Walk through. It doesn't look that deep.",
+        next: function () {
+          return playerState.hasGear ? "dead_river" : "river_survive_light";
+        },
+      },
+      { text: "Don't risk it. Find shelter and wait it out.", next: "shelter" },
+    ],
   },
 
   dead_river: {
@@ -157,16 +208,14 @@ var scenes = {
     dead: true,
     labelText: "DEAD END",
     text: "You step in. The heavy emergency gear in your pack acts like an anchor, throwing off your balance. The swift current catches your legs and pulls you sideways. You go under. You try to pull yourself out, gasping for air, but you're soaked to the bone and freezing. You made a bad situation much worse.",
-    ending: true
+    ending: true,
   },
 
   river_survive_light: {
     img: "https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=600&h=300&fit=crop",
     title: "Light On Your Feet",
     text: "You step in. The current catches your legs and pulls hard against you. However, because you traveled light and left the heavy emergency gear behind, your balance is perfect. You manage to keep your footing and cross safely to the other side.",
-    choices: [
-      { text: "Keep moving toward the trailhead.", next: "aftermath" }
-    ]
+    choices: [{ text: "Keep moving toward the trailhead.", next: "aftermath" }],
   },
 
   shelter: {
@@ -176,27 +225,36 @@ var scenes = {
       var base = "You find a rock overhang. ";
       if (playerState.savedGlen) {
         if (playerState.hasGear) {
-          base += "You pull out your emergency gear and wrap both of you in the foil blanket to share the warmth. ";
+          base +=
+            "You pull out your emergency gear and wrap both of you in the foil blanket to share the warmth. ";
         } else {
-          base += "Without any emergency gear, the two of you are forced to huddle closely together just to stave off the freezing rain. ";
+          base +=
+            "Without any emergency gear, the two of you are forced to huddle closely together just to stave off the freezing rain. ";
         }
       } else {
         if (playerState.hasGear) {
-          base += "You pull out your emergency foil blanket and wrap yourself up safely, staying perfectly dry and warm. ";
+          base +=
+            "You pull out your emergency foil blanket and wrap yourself up safely, staying perfectly dry and warm. ";
         } else {
-          base += "Without any emergency gear or extra layers, you spend the night shivering violently, alone in the brutal cold. ";
+          base +=
+            "Without any emergency gear or extra layers, you spend the night shivering violently, alone in the brutal cold. ";
         }
       }
-      return base + "You sit there, watching lightning crack over the mountain. At first light, the creek has dropped.";
+      return (
+        base +
+        "You sit there, watching lightning crack over the mountain. At first light, the creek has dropped."
+      );
     },
     choices: [
       {
         text: function () {
-          return playerState.savedGlen ? "Help Glen the last mile to the trailhead." : "Hike the last mile to the trailhead alone.";
+          return playerState.savedGlen
+            ? "Help Glen the last mile to the trailhead."
+            : "Hike the last mile to the trailhead alone.";
         },
-        next: "aftermath"
-      }
-    ]
+        next: "aftermath",
+      },
+    ],
   },
 
   leave_hiker: {
@@ -204,9 +262,17 @@ var scenes = {
     title: "The Creek",
     text: "You reach the creek alone. It's fast and deep. You don't have to worry about Glen, just yourself.",
     choices: [
-      { text: "Walk through.", next: function () { return playerState.hasGear ? "dead_river" : "river_survive_light"; } },
-      { text: "Don't risk the water alone. Find shelter and wait it out.", next: "shelter" }
-    ]
+      {
+        text: "Walk through.",
+        next: function () {
+          return playerState.hasGear ? "dead_river" : "river_survive_light";
+        },
+      },
+      {
+        text: "Don't risk the water alone. Find shelter and wait it out.",
+        next: "shelter",
+      },
+    ],
   },
 
   // ════════════════════════════════════════
@@ -233,22 +299,32 @@ var scenes = {
     },
     labelText: "SURVIVED",
     text: function () {
-      var base = "You reach the trailhead at dawn. You're exhausted and soaked, but you're alive. ";
+      var base =
+        "You reach the trailhead at dawn. You're exhausted and soaked, but you're alive. ";
       if (playerState.savedGlen === true) {
-        return base + "Glen's wife is there waiting. She hugs you with tears in her eyes. You didn't just survive; you made sure someone else did too.";
+        return (
+          base +
+          "Glen's wife is there waiting. She hugs you with tears in her eyes. You didn't just survive; you made sure someone else did too."
+        );
       } else if (playerState.savedGlen === false) {
-        return base + "You tell the ranger about a guy named Glen. They send a team up. You later learn that they found his lifeless body on the ground.";
+        return (
+          base +
+          "You tell the ranger about a guy named Glen. They send a team up. You later learn that they found his body dead on the ground."
+        );
       } else {
-        return base + "You walk to your car and sit for a long time, listening to the heater hum. You survived.";
+        return (
+          base +
+          "You walk to your car and sit for a long time, listening to the heater hum. You survived."
+        );
       }
     },
-    ending: true
-  }
+    ending: true,
+  },
 };
 
 function show(id) {
   // If moving back to start, reset state
-  if (id === 'start') {
+  if (id === "start") {
     playerState = { hasGear: false, savedGlen: null };
   }
 
@@ -257,43 +333,52 @@ function show(id) {
   var html = "";
 
   // Handle dynamic text and labels
-  var sceneText = (typeof s.text === 'function') ? s.text() : s.text;
-  var sceneLabel = (typeof s.labelText === 'function') ? s.labelText() : s.labelText;
-  var sceneTitle = (typeof s.title === 'function') ? s.title() : s.title;
-  var sceneImg = (typeof s.img === 'function') ? s.img() : s.img;
+  var sceneText = typeof s.text === "function" ? s.text() : s.text;
+  var sceneLabel =
+    typeof s.labelText === "function" ? s.labelText() : s.labelText;
+  var sceneTitle = typeof s.title === "function" ? s.title() : s.title;
+  var sceneImg = typeof s.img === "function" ? s.img() : s.img;
 
   html += '<img src="' + sceneImg + '" alt="' + sceneTitle + '">';
   html += '<div class="card-body">';
 
   if (s.ending) {
     if (s.dead) {
-      html += '<span class="ending-label label-dead">' + sceneLabel + '</span>';
+      html += '<span class="ending-label label-dead">' + sceneLabel + "</span>";
     } else {
-      html += '<span class="ending-label label-good">' + sceneLabel + '</span>';
+      html += '<span class="ending-label label-good">' + sceneLabel + "</span>";
     }
   }
 
-  html += '<h2 class="scene-title">' + sceneTitle + '</h2>';
-  html += '<div class="scene-text">' + sceneText + '</div>';
+  html += '<h2 class="scene-title">' + sceneTitle + "</h2>";
+  html += '<div class="scene-text">' + sceneText + "</div>";
 
   if (s.ending) {
     if (s.dead) {
-      html += '<button class="play-again restart-dead" onclick="show(\'start\')">Start Over</button>';
+      html +=
+        '<button class="play-again restart-dead" onclick="show(\'start\')">Start Over</button>';
     } else {
-      if (s.reflection) html += '<div class="reflection">' + s.reflection + '</div>';
-      html += '<button class="play-again" onclick="show(\'start\')">Play Again</button>';
+      if (s.reflection)
+        html += '<div class="reflection">' + s.reflection + "</div>";
+      html +=
+        '<button class="play-again" onclick="show(\'start\')">Play Again</button>';
     }
   } else {
     html += '<div class="choices">';
     for (var i = 0; i < s.choices.length; i++) {
       var c = s.choices[i];
-      var cText = (typeof c.text === 'function') ? c.text() : c.text;
-      html += '<button class="choice-btn" id="choice-' + i + '">' + cText + '</button>';
+      var cText = typeof c.text === "function" ? c.text() : c.text;
+      html +=
+        '<button class="choice-btn" id="choice-' +
+        i +
+        '">' +
+        cText +
+        "</button>";
     }
-    html += '</div>';
+    html += "</div>";
   }
 
-  html += '</div>';
+  html += "</div>";
   el.innerHTML = html;
 
   // Re-attach event listeners
@@ -301,11 +386,11 @@ function show(id) {
     for (var i = 0; i < s.choices.length; i++) {
       (function (index) {
         var c = s.choices[index];
-        var btn = document.getElementById('choice-' + index);
+        var btn = document.getElementById("choice-" + index);
         if (btn) {
-          btn.addEventListener('click', function () {
+          btn.addEventListener("click", function () {
             if (c.action) c.action();
-            var nextId = (typeof c.next === 'function') ? c.next() : c.next;
+            var nextId = typeof c.next === "function" ? c.next() : c.next;
             show(nextId);
           });
         }
