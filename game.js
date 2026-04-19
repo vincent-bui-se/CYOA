@@ -114,7 +114,7 @@ var scenes = {
       },
       {
         text: "Stick to the marked trail. You know where it goes.",
-        next: "marked_trail",
+        next: "bear",
       },
     ],
   },
@@ -158,6 +158,53 @@ var scenes = {
     dead: true,
     labelText: "DEAD END",
     text: "You slip and blow out your knee. You're off-trail and nobody can hear you. Without emergency gear, you spend the night shivering in the rain. By morning, you're too weak to call out.",
+    ending: true,
+  },
+
+  // ════════════════════════════════════════
+  // BEAR
+  // ════════════════════════════════════════
+
+  bear: {
+    img: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=600&h=300&fit=crop",
+    title: "Not Alone",
+    text: "You're moving fast down the marked trail when you round a switchback and freeze. Twenty feet ahead, a black bear is standing in the middle of the path, nose up, facing you. It's big. It hasn't charged, but it hasn't moved either. It's just watching you.",
+    choices: [
+      {
+        text: "Make yourself big. Shout and wave your arms.",
+        next: "bear_stand",
+      },
+      {
+        text: "Back away slowly. Give it space.",
+        next: "bear_back",
+      },
+      {
+        text: "Turn and run.",
+        next: "bear_run",
+      },
+    ],
+  },
+
+  bear_stand: {
+    img: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=600&h=300&fit=crop",
+    title: "Stand Your Ground",
+    text: 'You raise both arms and shout. "Hey! HEY!" The bear flinches, then huffs. For a long three seconds it holds its ground. Then it turns and crashes off into the trees. Your heart is hammering, but the trail is clear.',
+    choices: [{ text: "Keep moving.", next: "marked_trail" }],
+  },
+
+  bear_back: {
+    img: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=600&h=300&fit=crop",
+    title: "Slow Retreat",
+    text: "You take one careful step back, then another, keeping your eyes on the bear. It watches you but doesn't follow. After about fifty feet it loses interest and ambles into the brush. You wait another minute, then continue down.",
+    choices: [{ text: "Continue down the trail.", next: "marked_trail" }],
+  },
+
+  bear_run: {
+    img: "https://images.unsplash.com/photo-1664539069033-45b960463494?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Fatal Mistake",
+    dead: true,
+    labelText: "DEAD END",
+    text: "You bolt. It's the worst thing you can do. The bear's instincts kick in immediately — a fleeing animal is prey. It's on you in seconds. You don't make it far.",
     ending: true,
   },
 
