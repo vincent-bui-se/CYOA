@@ -126,7 +126,7 @@ var scenes = {
     text: "The shortcut is loose and wet. You slip and slide ten feet, slamming your knee against a boulder. You hear a loud pop. You can't put any weight on it. Because you have your emergency gear, you manage to stay warm while deciding what to do.",
     choices: [
       {
-        text: "Wrap up in the emergency blanket and blow the rescue whistle.",
+        text: "Wrap up in the emergency blanket and fire the rescue flare.",
         next: "rescue_ending",
       },
       {
@@ -140,7 +140,7 @@ var scenes = {
     img: "https://images.unsplash.com/photo-1634277248521-93343a10f4b2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     title: "Airlifted",
     labelText: "SURVIVED",
-    text: "A group of hikers on the main trail hears your whistle, but seeing the extent of your blown-out knee and the worsening storm, they contact Search and Rescue. You're later airlifted out. It takes a major surgery and six months of physical therapy to walk normally again.",
+    text: "Your flare arcs over the treeline and hikers on the main trail spot it through the storm. They contact Search and Rescue. You're later airlifted out. It takes a major surgery and six months of physical therapy to walk normally again.",
     ending: true,
   },
 
@@ -171,10 +171,6 @@ var scenes = {
     text: "You're moving fast down the marked trail when you round a switchback and freeze. Twenty feet ahead, a black bear is standing in the middle of the path, nose up, facing you. It's big. It hasn't charged, but it hasn't moved either. It's just watching you.",
     choices: [
       {
-        text: "Make yourself big. Shout and wave your arms.",
-        next: "bear_stand",
-      },
-      {
         text: "Back away slowly. Give it space.",
         next: "bear_back",
       },
@@ -183,13 +179,6 @@ var scenes = {
         next: "bear_run",
       },
     ],
-  },
-
-  bear_stand: {
-    img: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=600&h=300&fit=crop",
-    title: "Stand Your Ground",
-    text: 'You raise both arms and shout. "Hey! HEY!" The bear flinches, then huffs. For a long three seconds it holds its ground. Then it turns and crashes off into the trees. Your heart is hammering, but the trail is clear.',
-    choices: [{ text: "Keep moving.", next: "marked_trail" }],
   },
 
   bear_back: {
