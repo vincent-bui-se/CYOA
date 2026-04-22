@@ -68,33 +68,16 @@ var scenes = {
     ],
   },
 
-  dead_summit: {
-    img: "https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=600&h=300&fit=crop",
-    title: "Exposed",
-    dead: true,
-    labelText: "DEAD END",
-    text: "The storm hits. You have nothing to shield you from the wind and freezing rain. Your hands go numb immediately. Without any layers, your body temperature drops. You try to wait it out behind a rock, but the cold is too much. Search and rescue finds you the next morning. You didn't make it.",
-    ending: true,
-  },
-
   summit_light: {
     img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=300&fit=crop",
     title: "Race the Storm",
-    text: "Because you're traveling light, you're moving faster than you expected. The clouds are piling up behind you, but you're ahead of them. Your legs feel good. Your pack isn't dragging you down. You can see the summit cairn from here.",
+    text: "Because you're traveling light, you're moving faster than you expected. The clouds are piling up behind you, but you're ahead of them. Your legs feel good. Your pack isn't dragging you down. You can see the summit cairn from here, but the storm is closing in fast.",
     choices: [
       {
-        text: "Give it everything. Sprint the last stretch.",
-        next: "summit_ending",
+        text: "The storm is too close. Turn back now.",
+        next: "aftermath",
       },
     ],
-  },
-
-  summit_ending: {
-    img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=300&fit=crop",
-    title: "The Summit",
-    labelText: "SUMMIT",
-    text: "You reach the top just as the first distant rumble of thunder rolls across the valley below. You stand there for exactly thirty seconds — long enough to see the whole world laid out beneath you, the storm a dark curtain still miles away. Then you turn and run. You make the trailhead in record time, your car in sight just as the first fat raindrops hit the pavement. You sit in the driver's seat, breathing hard, grinning. You got there. You got back. You did it right.",
-    ending: true,
   },
 
   // ════════════════════════════════════════
