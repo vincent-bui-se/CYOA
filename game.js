@@ -45,7 +45,7 @@ var scenes = {
       {
         text: "Push for the summit. You're so close.",
         next: function () {
-          return playerState.hasGear ? "summit_survive" : "summit_light";
+          return playerState.hasGear ? "summit_survive" : "dead_summit";
         },
       },
       {
@@ -68,16 +68,13 @@ var scenes = {
     ],
   },
 
-  summit_light: {
-    img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=300&fit=crop",
-    title: "Race the Storm",
-    text: "Because you're traveling light, you're moving faster than you expected. The clouds are piling up behind you, but you're ahead of them. Your legs feel good. Your pack isn't dragging you down. You can see the summit cairn from here, but the storm is closing in fast.",
-    choices: [
-      {
-        text: "The storm is too close. Turn back now.",
-        next: "aftermath",
-      },
-    ],
+  dead_summit: {
+    img: "https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=600&h=300&fit=crop",
+    title: "Exposed",
+    dead: true,
+    labelText: "DEAD END",
+    text: "The storm hits. You have nothing to shield you from the wind and freezing rain. Your hands go numb immediately. Without any layers, your body temperature drops. You try to wait it out behind a rock, but the cold is too much. Search and rescue finds you the next morning. You didn't make it.",
+    ending: true,
   },
 
   // ════════════════════════════════════════
